@@ -1,0 +1,110 @@
+{% extends "layout_clients.html" %}
+
+{% block head%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" type="text/css" />
+
+{% endblock %}
+
+{% block content%}
+
+<section class="ftco-section">
+    <div class="wrapper fadeInDown">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="imge-wrap">
+                            <img src="{{ url_for('static', filename='img/ugca_login.png') }}">
+                        </div>
+                        <div class="login-wrap p-4 p-lg-5">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    <h3 class="mb-4">Iniciar sesión</h3>
+                                </div>
+                            </div>
+
+                            {% from "macro.html" import form_login %}
+
+                            <!------------------- INICIO FORMULARIO CORREO / STAR FORM EMAIL -------------------->
+                            <form action="/login/local" class="signin-form" method="post">
+
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                                <!------ CAMPO USUARIO / USER FIELD  ------->
+
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Ingrese usuario:</label>
+
+                                    {{form_login(formulario.email, class="form-control", placeholder="Usuario",
+                                    id="user")}}
+                                </div>
+
+                                <!------ CAMPO CANTRASEÑA / PASSWORS FIELD  ------->
+
+                                <div class="form-group mb-3">
+                                    <label class="label" for="Contraseña">Ingrese contraseña:</label>
+                                    <div class="input-group">
+                                        {{form_login(formulario.password, class="form-control",
+                                        placeholder="Contraseña",
+                                        id="txtPassword")}}
+                                        <div class="input-group-append">
+                                            <button id="show_password" class="btn " type="button"
+                                                onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span>
+                                            </button>
+                                        </div>
+                                    </div> <br>
+
+                                    <!------ BOTON DE ENVIO / BUTTON SUBMIT ------->
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn form-control submit px-3">
+                                            Iniciar sesión </button>
+                                    </div>
+                            </form>
+                            <!---------------------FIN FORMULARIO / END FORM  ----------------------------------->
+
+                            <!------ BOTON DE LOGIN MIUGCA / LOGIN MIUGCA SUBMIT ------->
+                            <hr>
+                            <a href="/login/google" class="btn" id="login_google" role="button">Iniciar Sesion Con
+                                Gmail <img src="{{ url_for('static', filename='img/logo_google.png') }}" width="20"
+                                    height="18"></a>
+                            <br>
+
+                            <!------ BOTON DE LOGIN UGCA / LOGIN UGCA SUBMIT ------->
+                            <a href="/login/microsoft" class="btn" id="login_outlook" role="button">Iniciar Sesion
+                                Con Outlook <img src="{{ url_for('static', filename='img/logo_outlook.png') }}"
+                                    width="20" height="18"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block footer%}
+
+<script defer src="{{ url_for('static', filename='js/script_contra.js') }}"></script>
+
+<!-- Inicio de Script boostrap / Star the Script boostrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" 
+    crossorigin="anonymous"></script>
+<!-- Fin de Script boostrap / End the Script boostrap-->
+
+{% endblock %}

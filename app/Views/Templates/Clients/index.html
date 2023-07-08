@@ -1,0 +1,72 @@
+{% extends "layout_clients.html" %}
+
+{% block content%}
+
+<div class="container-fluid px-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>SOLICITUD DE CERTIFICADOS</h4>
+            <hr>
+
+            {% from "macro.html" import form_mail %}
+
+            <!------------------- INICIO FORMULARIO CORREO / STAR FORM EMAIL -------------------->
+            <form action="/email/datos" method="POST">
+
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                 <!------ CAMPO TIPO CERTIFICADO / CERTIFICATE TYPE FIELD  ------->
+
+                 <div class="group">
+                    <label for="ced_nit" class="label">Tipo de certificado</label>
+
+                    {{form_mail(formulario.tipo_certificado, class="form-control")}}
+                </div>
+                <br>
+
+                <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+
+                <div class="group">
+                    <label for="ced_nit" class="label">Tipo de documento</label>
+
+                    {{form_mail(formulario.tipo_doc, class="form-control")}}
+                </div>
+                <br>
+
+                <!------ CAMPO Nu. DOCUMENTO / Num. DOCUMENT FIELD ------->
+
+                <div class="group">
+                    <label for="num_ident" class="label">Número de documento</label>
+
+                    {{form_mail(formulario.num_iden, class="form-control",
+                    onkeyup="if(this.value.length>15){this.value=this.value.substring(0,15)}")}}
+                </div>
+                <br>
+
+                <!------ CAMPO DE AÑO / YEAR FIELD ------->
+
+                <div class="group">
+                    <label for="año" class="label">Año</label>
+
+                    {{form_mail(formulario.year, class="form-control",
+                    onkeyup="if(this.value.length>4){this.value=this.value.substring(0,4)}")}}
+                </div>
+                <br>
+
+                {% from "macro.html" import recaptcha %}
+
+                <div class="g-recaptcha" data-sitekey="{{ form_recaptcha }}"></div> <br />
+
+                <!------ BOTON DE ENVIO / BUTTON SUBMIT ------->
+
+                <div class="group">
+                    <input type="submit" class="button" value="SOLICITAR CERTIFICADO TRIBUTARIO" id="guardarBtn"
+                            onclick="envioEmail()">
+                </div>
+            </form>
+            <!---------------------FIN FORMULARIO / END FORM  ----------------------------------->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

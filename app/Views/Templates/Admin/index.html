@@ -1,0 +1,103 @@
+{% extends "layout_admin.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block content%}
+
+<div class="mx-auto row justify-content-center">
+
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3">
+        <div class="card bg-transparent">
+            <a href="/admin/tipo_certificados" class="btn text-start">
+                <img src="{{ url_for('static', filename='img/tipo_certificado.png') }}" class="card-img-top">
+                <hr>
+                <div class="card-body" align="center">
+                    <h5 class="card-title fw-bold"><i class="bi bi-calendar-plus"></i>Tipo De Certificados</h5>
+                    <p class="card-text mb-0">Certificados</p>
+                    <p class="card-text enlaces">Permisos: Co-Administrador y Administrador <i
+                            class="bi bi-chevron-right"></i></p>
+                </div>
+            </a>
+        </div><a href="/admin/tipo_certificados" class="btn text-start">
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3">
+        <div class="card bg-transparent">
+            <a href="/admin/certificados" class="btn text-start">
+                <img src="{{ url_for('static', filename='img/certificados.png') }}" class="card-img-top">
+                <hr>
+                <div class="card-body" align="center">
+                    <h5 class="card-title fw-bold"><i class="bi bi-calendar-plus"></i>Registro De Certificados</h5>
+                    <p class="card-text mb-0">Certificados almacenados</p>
+                    <p class="card-text enlaces">Permisos: Co-Administrador y Administrador <i
+                            class="bi bi-chevron-right"></i></p>
+                </div>
+            </a>
+        </div><a href="/admin/certificados" class="btn text-start">
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3">
+        <div class="card bg-transparent">
+            <a href="/admin/proveedores" class="btn text-start">
+                <img src="{{ url_for('static', filename='img/proveedores.png') }}" class="card-img-top">
+                <hr>
+                <div class="card-body" align="center">
+                    <h5 class="card-title fw-bold"><i class="bi bi-calendar-plus"></i> Proveedores</h5>
+                    <p class="card-text mb-0">Datos de proveedores</p>
+                    <p class="card-text enlaces">Permisos: Co-Administrador y Administrador <i
+                        class="bi bi-chevron-right"></i></p>
+                </div>
+            </a>
+        </div><a href="/admin/proveedores" class="btn text-start">
+        </a>
+    </div>
+
+</div>
+
+<div class="mx-auto row justify-content-center contenedor-2">
+
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3">
+        <div class="card bg-transparent">
+            <a href="/admin/solicitudes" class="btn text-start">
+                <img src="{{ url_for('static', filename='img/registro.png') }}" class="card-img-top">
+                <hr>
+                <div class="card-body" align="center">
+                    <h5 class="card-title fw-bold"><i class="bi bi-calendar-plus"></i>Consulta de solicitudes</h5>
+                    <p class="card-text mb-0">Solicitudes de certificados</p>
+                    <p class="card-text enlaces">Permisos: Co-Administrador y Administrador<i
+                            class="bi bi-chevron-right"></i></p>
+                </div>
+            </a>
+        </div><a href="/admin/solicitudes" class="btn text-start">
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3">
+        <div class="card bg-transparent">
+            <a href="/admin/usuarios" class="btn text-start">
+                <img src="{{ url_for('static', filename='img/usuarios.png') }}" class="card-img-top">
+                <hr>
+                <div class="card-body" align="center">
+                    <h5 class="card-title fw-bold"><i class="bi bi-calendar-plus"></i> Usuarios</h5>
+                    <p class="card-text mb-0">Gestiona de permisos Usuarios</p>
+                    <p class="card-text enlaces">Permisos: Administrador <i
+                        class="bi bi-chevron-right"></i></p>
+                    <p></p>
+                </div>
+            </a>
+        </div><a href="/admin/usuarios" class="btn text-start">
+        </a>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

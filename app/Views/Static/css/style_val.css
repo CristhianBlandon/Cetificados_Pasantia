@@ -1,0 +1,208 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.escudo {
+	height: 60px;
+}
+
+.navbar {
+	background-color: #00450f; /* tambien se puede #5c9e31*/
+	align-items: center;
+	text-transform: uppercase;
+	font-size: larger;
+	font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.navbar h5 {
+	margin-right: 2%;
+	margin-left: 2%;
+	color: white;
+}
+
+.navbar .collapse .navbar-nav h6[class='links_nav']>a[class='nav-link active'] {
+	margin-right: 30px;
+	color: white;
+}
+
+.navbar .collapse .navbar-nav h6[class='links_nav']>a[class='nav-link active']:hover {
+	color: white;
+}
+
+.navbar .collapse .navbar-nav h6[class='links_nav']>a[class='nav-link active']::after {
+	color: white;
+}
+
+body {
+	background-color: rgb(245, 245, 245);
+}
+
+div[class='container-fluid px-4'] {
+	width: 65%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+}
+
+div[class='container-fluid px-4'] .card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 20px;
+}
+
+div[class='container-fluid px-4'] .card>hr {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+div[class='container-fluid px-4'] div[class='card mb-4'] {
+	flex: 1 1 auto;
+	padding: 1rem 1rem;
+}
+
+/* ---------------- ESTILO PARA AMBOS FORMULARIOS PARA QUE NO APAREZCA EN EL MISMO SI NO QUE HAYA UN CAMBIO DE PAGINA ---------------- */
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='val-html'] {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	transition: all .4s linear;
+}
+
+/* ------------------------------- ESTILO PARA LOS LABEL REGISTRO E INICIO SESION, A LA HORA DE DARLE CLICK ----------------------- */
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='val-html'] .sign-in:checked {
+	color: #fff;
+	border-color: black;
+}
+
+/* ------------------------------------------- DISEÑO DE LA SECCION FORM ------------------------------------------------- */
+.val-form {
+	min-height: 340x;
+	position: relative;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+
+/* ------------------------------------------- POSICIONAMIENTO DE LOS INPUTS, LABEL Y BUTON ------------------------------------------------- */
+.val-form .group .label,
+.val-form .group .input,
+.val-form .group .button {
+	width: 100%;
+	color: rgb(24, 23, 23);
+	display: block;
+}
+
+/* ------------------------------------------- DISEÑO DE LOS INPUTS COLOR, TAMAÑO ------------------------------------------------- */
+.val-form .group .input,
+.val-form .group .button {
+	border: none;
+	padding: 15px 20px;
+	border-radius: 25px;
+	background: rgb(218, 214, 214);
+}
+
+/* ------------------------------------------- TAMAÑO Y COLOR DE LOS LABEL ------------------------------------------------- */
+.val-form .group .label {
+	color: black;
+	font-size: 15px;
+}
+
+/* ------------------------------------------- COLOR DE LOS BOTONES ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	margin: 5px auto;
+	width: 35%;
+	background: #00450f;
+	color: white;
+	border-radius: 20px;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button:hover {
+	color: #fff;
+	background: #00450f;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	text-transform: uppercase;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	width: 100%;
+	color: white;
+	display: block;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	border: none;
+	padding: 10px 15px;
+	background: rgb(218, 214, 214);
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	background: #00450f;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button:hover {
+	color: #fff;
+	background: green;
+}
+
+/* ------------------------------------------- ANIMACION, COLOR, TAMAÑO, POSICION DEL CHULEO EN CASILLA ----------------------------------------- */
+
+.val-form .group .check:checked+label {
+	color: #fff;
+}
+
+.val-form .group .check:checked+label .icon {
+	background: #2caa61;
+}
+
+.val-form .group .check:checked+label .icon:before {
+	transform: scale(1) rotate(45deg);
+}
+
+.val-form .group .check:checked+label .icon:after {
+	transform: scale(1) rotate(-45deg);
+}
+
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='val-html'] .sign-in:checked+.val-form .sign-in-htm {
+	transform: rotate(0);
+}
+
+
+/* ------------------------------------------- COLOR DE LOS SALTOS DE LINEA ------------------------------------------------- */
+.hr {
+	height: 2px;
+	margin: 30px 0 20px 0;
+	background: rgba(255, 255, 255, .2);
+}
+
+/* ------------------------------------------- CENTRADO DE LOS LINKS ------------------------------------------------- */
+.foot-lnk {
+	text-align: center;
+}
+
+div[class='g-recaptcha']{
+	display: block;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.g-recaptcha{
+	display: block;
+	margin: auto;
+}

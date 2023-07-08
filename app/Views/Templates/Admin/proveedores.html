@@ -1,0 +1,158 @@
+{% extends "layout_admin.html" %}
+
+{% block head %}
+
+<title>Admin Certificados / Proveedores</title>
+
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_prov %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/proveedores/agregar" method="POST">
+
+                    <h4>REGISTRO DE PROVEEDORES</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+                                <td class="label_td">
+                                    <label for="ced_nit" class="label">
+                                        Tipo de documento:
+                                    </label>
+                                </td>
+
+                                {{form_prov(formulario_prov.tipo_doc, class="form-control")}}
+
+                                <td class="label_td">
+                                    <label for="num_ident" class="label">
+                                        Número de documento:
+                                    </label>
+                                </td>
+
+                                {{form_prov(formulario_prov.num_iden, class="form-control",
+                                minlength="5", maxlength="10")}}
+
+                            </tr>
+
+                            <!------ CAMPO DEL NOMBRE DE LA PERSONA O ENTIDAD  / NAME FIELD OF THE PERSON OR ENTITY ------->
+                            <tr>
+                                <td class="label_td">
+                                    <label for="nombre" class="label">
+                                        Nombre o Razon Social:
+                                    </label>
+                                </td>
+
+                                {{form_prov(formulario_prov.nombre_razonsocial, class="form-control",
+                                minlength="5", maxlength="60")}}
+
+                                <td class="label_td">
+                                    <label for="email" class="label">
+                                        Email:
+                                    </label>
+                                </td>
+
+                                {{form_prov(formulario_prov.email, class="form-control",
+                                minlength="5", maxlength="60", type="emial")}}
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="telefono" class="label">
+                                        Telefono:
+                                    </label>
+                                </td>
+                                {{form_prov(formulario_prov.telefono, class="form-control",
+                                minlength="5", maxlength="15")}}
+
+                                <td class="label_td">
+                                    <label for="direccion" class="label">
+                                        Dirección:
+                                    </label>
+                                </td>
+
+                                {{form_prov(formulario_prov.direccion, class="form-control",
+                                minlength="5", maxlength="60")}}
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Guardar datos proveedores"
+                                        id="guardarBtn" onclick="saveConfirmation(this)">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i> TABLA DE SOLICITUD DE PROVEEDORES
+            </div>
+            <div class="card-body table-responsive-xxl">
+                <table id="" class="display table nowrap table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">TIPO DOCUMENTO</th>
+                            <th scope="col">NÚMERO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">TELEFONO</th>
+                            <th scope="col">DIRECCION</th>
+                            <th scope="col">SOLICITUDES</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for data in datos %}
+
+                        <tr>
+                            <td>{{data.0}}</td>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>{{data.3}}</td>
+                            <td>{{data.4}}</td>
+                            <td>{{data.5}}</td>
+                            <td>{{data.6}}</td>
+                            <td>
+                                <div class="col-12">
+                                    <a href="/admin/proveedores/editar/{{data.0}}/{{data.1}}"
+                                        class="btn btn-primary col-5 px-0" role="button">
+                                        <img class="iconos-tabla" title="Editar" 
+                                            src="{{ url_for('static', filename='img/icono-lapiz.png') }}">
+                                    </a>
+                                    <button class="btn btn-danger col-5 px-0" type="button" onclick="deleteConfirmation(this)"
+                                        data-delete-url="/admin/proveedores/eliminar/{{data.0}}/{{data.1}}">
+                                        <img class="iconos-tabla" title="Eliminar"
+                                            src="{{ url_for('static', filename='img/icono-eliminar.png') }}">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

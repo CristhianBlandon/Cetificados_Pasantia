@@ -1,0 +1,59 @@
+{% extends "layout_admin.html" %}
+
+{% block head %}
+<title>Admin Certificados / Solicitudes</title>
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_field %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i> TABLA DE SOLICITUD DE DOCUMENTOS
+            </div>
+            <div class="card-body table-responsive-xxl">
+                <table id="" class="display table nowrap table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID REGISTRO</th>
+                            <th scope="col">TIPO DE DOCUMENTO</th>
+                            <th scope="col">NÚMERO DE IDENTIFICACIÓN</th>
+                            <th scope="col">NOMBRE - R.S.</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">ID DOCUMENTO</th>
+                            <th scope="col">DOCUMENTO</th>
+                            <th scope="col">FECHA DE SOLICITUD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for data in datos %}
+
+                        <tr>
+                            <td>{{data.0}}</td>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>{{data.3}}</td>
+                            <td>{{data.4}}</td>
+                            <td>{{data.5}}</td>
+                            <td>{{data.6}}</td>
+                            <td>{{data.7}}</td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block footer%}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% macro form_field(field) %}
+<td class="input_td"> {{ field(**kwargs)|safe }}  </td>
+{% endmacro %}
+
+{% macro form_prov(prov) %}
+<td class="input_td"> {{ prov(**kwargs)|safe}}  </td>
+{% endmacro %}
+
+{% macro form_cert(cert) %}
+<td class="input_td"> {{ cert(**kwargs)|safe }}  </td>
+{% endmacro %}
+
+{% macro form_tip(tip_cert) %}
+<td class="input_td" colspan="4"> {{ tip_cert(**kwargs)|safe }}  </td>
+{% endmacro %}
+
+{% macro form_login(login) %}
+<td class="input_td">{{ login(**kwargs)|safe }}</td>
+{% endmacro %}
+
+{% macro form_admin(admin) %}
+<td class="input_td">{{ admin(**kwargs)|safe }}</td>
+{% endmacro %}
+
+{% macro form_edit_users(users) %}
+<td class="input_td"> {{ users(**kwargs)|safe}}  </td>
+{% endmacro %}
+
+{% macro form_mail(mail) %}
+<td class="input_td"> {{ mail(**kwargs)|safe }}  </td>
+{% endmacro %}
+
+{% macro recaptcha() %}
+    <div>
+        {{ form.recaptcha.render() }}
+    </div>
+{% endmacro %}

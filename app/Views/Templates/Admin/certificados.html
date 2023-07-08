@@ -1,0 +1,195 @@
+{% extends "layout_admin.html" %}
+
+{% block head%}
+
+<title>Admin Certificados / Certificados</title>
+
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_cert %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/certificados/agregar" method="POST"
+                    enctype="multipart/form-data">
+
+                    <h4>REGISTRO DE CERTIFICADOS</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="nombre" class="label">
+                                        Nombre o Razon Social:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.nombre_razonsocial, class="form-control",
+                                oninput="enviarDatos()", minlength="5", maxlength="60")}}
+
+                                <td class="label_td">
+                                    <label for="ced_nit" class="label">
+                                        Tipo de documento:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.tipo_doc_proveedor, class="form-control",readonly=True)}}
+
+                            </tr>
+
+                            <!------ CAMPO DEL NOMBRE DE LA PERSONA O ENTIDAD  / NAME FIELD OF THE PERSON OR ENTITY ------->
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="num_ident" class="label">
+                                        Número de documento:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.num_iden_proveedor, class="form-control",
+                                minlength="5", maxlength="10", readonly =True)}}
+
+                                <td class="label_td">
+                                    <label for="email" class="label">
+                                        Email:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.email, class="form-control",
+                                minlength="5", maxlength="60", type="emial",readonly=True)}}
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="year" class="label">
+                                        Año:
+                                    </label>
+                                </td>
+                                {{form_cert(formulario_cert.year, class="form-control",
+                                minlength="5", maxlength="15")}}
+
+                                <td class="label_td">
+                                    <label for="tip_cert" class="label">
+                                        Tipo Certificado:
+                                    </label>
+                                </td>
+                                {{form_cert(formulario_cert.tipo_certificado, class="form-control",
+                                minlength="5", maxlength="15")}}
+                            </tr>
+                            <tr>
+                                <td class="label_td">
+                                    <label for="archivo" class="label">
+                                        Archivo:
+                                    </label>
+                                </td>
+
+                                <td>
+                                    <div class="invoiceBox form-control">
+                                        <label for="file">
+                                            <div class="boxFile" data-text="Seleccionar archivo">
+                                                Seleccionar archivo
+                                            </div>
+                                        </label>
+                                    </div>
+                                </td>
+
+                                {{form_cert(formulario_cert.archivo, id="file", multiple="", size="6000",
+                                accept="application/pdf,image", minlength="5", maxlength="60",
+                                for="nuestroinput")}}
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Guardar certificado" id="guardarBtn"
+                                        onclick="saveConfirmation(this)">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i> TABLA DE SOLICITUD DE CERTIFICADOS
+            </div>
+            <div class="card-body table-responsive-xxl">
+                <table id="" class="display table nowrap table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">TIPO DOCUMENTO</th>
+                            <th scope="col">NÚMERO DOCUMENTO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">TIPO CERTIFICADO</th>
+                            <th scope="col">CERTIFICADO</th>
+                            <th scope="col">AÑO</th>
+                            <th scope="col">SOLICITUDES</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for data in datos %}
+
+                        <tr>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>{{data.3}}</td>
+                            <td>{{data.4}}</td>
+                            <td>{{data.5}}</td>
+                            <td>{{data.6}}</td>
+                            <td>{{data.7}}</td>
+                            <td>{{data.8}}</td>
+                            <td>{{data.9}}</td>
+                            <td>
+                                <div class="mx-auto justify-content-center btn-group btn-group-horizontal" role="group">
+                                    <a href="/admin/certificados/vista/{{data.0}}/{{data.6}}"
+                                        role="button" target="_blank" class="btn btn-success btn-block">
+                                        <img class="iconos-tabla" title="Visualizar documento"
+                                            src="{{ url_for('static', filename='img/icono-ojo.png') }}">
+                                    </a>
+                                    <a href="/admin/certificados/editar/{{data.0}}"
+                                        role="button" class="btn btn-primary btn-block">
+                                        <img class="iconos-tabla" title="Editar"
+                                            src="{{ url_for('static', filename='img/icono-lapiz.png') }}">
+                                    </a>
+                                    <button type="button" onclick="deleteConfirmation(this)"
+                                        class="btn btn-danger btn-block"
+                                        data-delete-url="/admin/certificados/eliminar/{{data.0}}/{{data.6}}">
+                                        <img class="iconos-tabla" title="Eliminar"
+                                            src="{{ url_for('static', filename='img/icono-eliminar.png') }}">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js/autocomplete.js') }}">
+</script>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout_admin.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_admin %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/usuarios/actualizar/{{edita.1}}" method="POST"
+                    enctype="multipart/form-data">
+
+                    <h4>REGISTRO DE ADMINISTRADORES</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+                                <td class="label_td">
+                                    <label for="ced_nit" class="label">
+                                        Tipo de documento:
+                                    </label>
+                                </td>
+
+                                {{form_admin(form_administrador.tipo_doc, class="form-control", value=edita.0)}}
+
+                                <td class="label_td">
+                                    <label for="num_ident" class="label">
+                                        Número de documento:
+                                    </label>
+                                </td>
+
+                                {{form_admin(form_administrador.num_iden, class="form-control", value=edita.1, placeholder="000000000",
+                                minlength="5", maxlength="10")}}
+
+                            </tr>
+
+                            <!------ CAMPO DEL NOMBRE DE LA PERSONA O ENTIDAD  / NAME FIELD OF THE PERSON OR ENTITY ------->
+                            <tr>
+                                <td class="label_td">
+                                    <label for="nombre" class="label">
+                                        Nombre del trabajador:
+                                    </label>
+                                </td>
+
+                                {{form_admin(form_administrador.nombre, class="form-control", value=edita.2, placeholder="Nombre",
+                                minlength="5", maxlength="60")}}
+
+                                <td class="label_td">
+                                    <label for="email" class="label">
+                                        Email:
+                                    </label>
+                                </td>
+
+                                {{form_admin(form_administrador.email, class="form-control", value=edita.3,
+                                placeholder="Example@Email.com",
+                                minlength="5", maxlength="60", type="emial")}}
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="nombre" class="label">
+                                        Contraseña:
+                                    </label>
+                                </td>
+                                {{form_admin(form_administrador.password, class="form-control", value=edita.5, placeholder="Contraseña",
+                                minlength="5", maxlength="60", id="txtPassword")}}
+
+                                <td class="label_td">
+                                    <label for="email" class="label">
+                                        Permisos:
+                                    </label>
+                                </td>
+
+                                {{form_admin(form_administrador.cargo, class="form-control", value=edita.5,
+                                placeholder="Example@Email.com",
+                                minlength="5", maxlength="60")}}
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Actualizar usuario" id="editarBtn"
+                                        onclick="editConfirmation()">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

@@ -1,0 +1,2 @@
+2023-03-29 13:47:15,705 - app.Database.logger - ERROR - Error en la coneccion a la base de datos: 1049 (42000): Unknown database 'certificados_proveedores'
+2023-04-24 10:26:51,686 - app.Database.logger - ERROR - Error en la coneccion a la base de datos: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión)

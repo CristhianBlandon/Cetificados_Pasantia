@@ -1,0 +1,88 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	margin: auto;
+}
+
+/*------------------    NAVBAR    --------------------*/
+
+.navbar {
+	background-color: #00450f; /* tambien se puede #5c9e31*/
+	align-items: center;
+	font-size: larger;
+}
+
+.navbar ul[class='navbar-nav me-auto mb-2 mb-lg-0'] {
+	table-layout: fixed;
+	width: 50%;
+	border: 2;
+}
+
+.navbar ul[class='navbar-nav me-auto mb-2 mb-lg-0'] li {
+	width: 50%;
+	word-wrap: break-word;
+}
+
+img[class='foto_profile'] {
+	width:150px;
+    height:150px;
+    border-radius:150px;
+}
+
+.escudo {
+	height: 60px;
+}
+
+/*  */
+
+div[class='container-fluid px-4'] {
+	width: 100%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 95px;
+}
+
+div[class='container-fluid px-4'] .card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+}
+
+div[class='container-fluid px-4'] .card>hr {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] {
+	flex: 1 1 auto;
+	padding: 1rem 1rem;
+}
+
+/*------------------    FORMULARIO TABLA    --------------------*/
+
+/*------------------    DATOS TABLA    --------------------*/
+
+/*estilos para la tabla*/
+table th {
+    background-color: #337ab7 !important;
+    color: white;
+}
+table>tbody>tr>td {
+    vertical-align: middle !important;
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}

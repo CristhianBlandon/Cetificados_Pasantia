@@ -1,0 +1,49 @@
+Certificados
+|-----main.py
+|-----config.py
+|-----forms.py
+|-----.env
+|-----app/
+	|-----Database/
+			|-----__init__.py
+			|-----connection.py
+			|-----logger.py
+			|-----database_errors.log
+	|-----Helpers/
+		|-----__init__.py
+		|-----autorizacion_login.py
+	|-----Routes/
+		|-----__init__.py
+		|-----Admin/
+				|-----admin_index.py
+				|-----certificados.py
+				|-----proveeedores.py
+				|-----solicitudes.py
+				|-----tipo_certificados.py
+				|-----usuarios.py
+		|-----Clients/
+				|-----index.py
+				|-----login.py	
+	|-----Uploads/
+	|-----Views/
+		|-----Templates/
+				|-----Admin/
+					|-----Archive/
+						|-----edit_certificados.html
+						|-----edit_proveedores.html
+						|-----edit_tipo_certificados.html
+						|-----edit_usuarios.html
+					|-----certificados.html
+					|-----index.html
+					|-----proveedores.html
+					|-----solicitudes.html
+					|-----tipo_certificados.html
+					|-----usuarios.html
+				|-----Clients/
+				|-----layout_admin.html
+				|-----layout_clients.html
+				|-----macro.html
+		|-----Static/
+				|-----css/
+				|-----img/
+				|-----js/

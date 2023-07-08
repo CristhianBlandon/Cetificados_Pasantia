@@ -1,0 +1,107 @@
+{% extends "layout_admin.html" %}
+
+{% block head%}
+
+<title>Admin Certificados / Tipo Certificados</title>
+
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_tip %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/tipo_certificados/agregar" method="POST" enctype="multipart/form-data">
+
+                    <h4>REGISTRO DE TIPOS DE CERTIFICADOS</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+
+                                <h2><label for="nombre" class="label">
+                                    Nombre del tipo de certificado:
+                                </label></h2>
+
+
+                                {{form_tip(formulario_tip_cert.tipo_cert , class="form-control",
+                                oninput="enviarDatos()", minlength="5", maxlength="60")}}
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Guardar tipo de certificado" id="guardarBtn"
+                                        onclick="saveConfirmation(this)">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i> TABLA DE TIPOS DE CERTIFICADOS
+            </div>
+            <div class="card-body table-responsive-xxl">
+                <table id="" class="display table nowrap table-bordered" width="100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID TIPO CERTIFICADO</th>
+                            <th scope="col">TIPO CERTIFICADO</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for data in datos %}
+
+                        <tr>
+                            <td>{{data.0}}</td>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>
+                                <div class="mx-auto justify-content-center btn-group btn-group-horizontal" role="group">
+                                    <a href="/admin/tipo_certificados/editar/{{data.0}}" role="button"
+                                        class="btn btn-primary btn-block">
+                                        <img class="iconos-tabla" title="Editar"
+                                            src="{{ url_for('static', filename='img/icono-lapiz.png') }}">
+                                    </a>
+                                    <button type="button" onclick="deleteConfirmation(this)"
+                                        class="btn btn-danger btn-block"
+                                        data-delete-url="/admin/tipo_certificados/eliminar/{{data.0}}">
+                                        <img class="iconos-tabla" title="Eliminar"
+                                            src="{{ url_for('static', filename='img/icono-eliminar.png') }}">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+
+
+
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js/autocomplete.js') }}">
+</script>
+
+{% endblock %}

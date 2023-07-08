@@ -1,0 +1,63 @@
+{% extends "layout_admin.html" %}
+
+{% block head%}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_tip %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/tipo_certificados/actualizar/{{edita.0}}" method="POST" enctype="multipart/form-data">
+
+                    <h4>REGISTRO DE TIPO DE CERTIFICADO CERTIFICADOS</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+
+                                <h2><label for="nombre" class="label">
+                                    Nombre del tipo de certificado:
+                                </label></h2>
+
+
+                                {{form_tip(formulario_tip_cert.tipo_cert , class="form-control",
+                                oninput="enviarDatos()", minlength="5", maxlength="60",  value=edita.1)}}
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Guardar tipo de certificado" id="guardarBtn"
+                                        onclick="editConfirmation(this)">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+
+
+
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js/autocomplete.js') }}">
+</script>
+
+{% endblock %}

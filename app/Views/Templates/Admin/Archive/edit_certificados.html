@@ -1,0 +1,132 @@
+{% extends "layout_admin.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
+{% block content%}
+
+{% from "macro.html" import form_cert %}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/certificados/actualizar/{{edita.0}}/{{edita.8}}/{{edita.5}}" method="POST"
+                    enctype="multipart/form-data">
+
+                    <h4>REGISTRO DE CERTIFICADOS</h4>
+                    <hr>
+
+                    <div class="group">
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <table class="table_form">
+                            <!------ CAMPO DOCUMENTO / DOCUMENTE FIELD  ------->
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="nombre" class="label">
+                                        Nombre o Razon Social:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.nombre_razonsocial, class="form-control",
+                                oninput="enviarDatos()", value=edita.3,
+                                minlength="5", maxlength="60")}}
+
+                                <td class="label_td">
+                                    <label for="ced_nit" class="label">
+                                        Tipo de documento:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.tipo_doc_proveedor, class="form-control",
+                                value=edita.1, readonly=True)}}
+
+                            </tr>
+
+                            <!------ CAMPO DEL NOMBRE DE LA PERSONA O ENTIDAD  / NAME FIELD OF THE PERSON OR ENTITY ------->
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="num_ident" class="label">
+                                        Número de documento:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.num_iden_proveedor, class="form-control", value=edita.2, readonly=True,
+                                minlength="5", maxlength="10")}}
+
+                                <td class="label_td">
+                                    <label for="email" class="label">
+                                        Email:
+                                    </label>
+                                </td>
+
+                                {{form_cert(formulario_cert.email, class="form-control", value=edita.4, readonly=True,
+                                minlength="5", maxlength="60", type="emial")}}
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="label_td">
+                                    <label for="year" class="label">
+                                        Año:
+                                    </label>
+                                </td>
+                                {{form_cert(formulario_cert.year, class="form-control",
+                                minlength="5", maxlength="15", value=edita.6, readonly=True)}}
+
+                                <td class="label_td">
+                                    <label for="tip_cert" class="label">
+                                        Tipo de certificado
+                                    </label>
+                                </td>
+                                {{form_cert(formulario_cert.tipo_certificado, class="form-control",
+                                value=edita.7, readonly=True)}}
+                            </tr>
+
+                            <tr>
+                                <td class="label_td">
+                                    <label for="archivo" class="label">
+                                        Archivo:
+                                    </label>
+                                </td>
+
+                                <td>
+                                    <div class="invoiceBox form-control">
+                                        <label for="file">
+                                            <div class="boxFile" data-text="Seleccionar archivo">
+                                                {{edita.5}}
+                                            </div>
+                                        </label>
+                                    </div>
+                                </td>
+
+                                {{form_cert(formulario_cert.archivo, id="file", multiple="", size="6000",
+                                accept="application/pdf,image", minlength="5", maxlength="60",
+                                for="nuestroinput")}}
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" class="button" value="Actualizar certificado" id="editarBtn"
+                                        onclick="editConfirmation()">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer%}
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js/autocomplete.js') }}">
+</script>
+{% endblock %}

@@ -1,0 +1,292 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+h5[class='links_nav']>a {
+	color: white;
+}
+
+h5[class='links_nav']>a:hover {
+	color: white;
+}
+
+h5[class='links_nav']>a::after {
+	color: white;
+}
+
+.breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 0;
+	margin-bottom: 1rem;
+	list-style: none;
+}
+
+.mt-4 {
+	margin-top: 1.5rem !important;
+}
+
+hr {
+	margin: 1rem 0;
+	color: inherit;
+	background-color: currentColor;
+	border: 0;
+	opacity: 0.25;
+}
+
+hr:not([size]) {
+	height: 1px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+body {
+	margin: auto;
+}
+
+.navbar {
+	background-color: #00450f; /* tambien se puede #5c9e31*/
+	align-items: center;
+	font-size: larger;
+}
+
+.navbar ul[class='navbar-nav me-auto mb-2 mb-lg-0'] {
+	table-layout: fixed;
+	width: 50%;
+	border: 2;
+}
+
+.navbar ul[class='navbar-nav me-auto mb-2 mb-lg-0'] li {
+	width: 50%;
+	word-wrap: break-word;
+}
+
+img[class='foto_profile'] {
+	width:150px;
+    height:150px;
+    border-radius:150px;
+}
+
+
+.escudo {
+	height: 60px;
+}
+
+/* Formato de Index Admin */
+
+div[class='mx-auto row justify-content-center']{
+	width: 95%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 80px;
+}
+
+div[class='mx-auto row justify-content-center'] img{
+	height: 100% !important;
+	width: 100%;
+}
+
+div[class='mx-auto row justify-content-center contenedor-2']{
+	width: 95%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+div[class='mx-auto row justify-content-center contenedor-2'] img{
+	height: 100% !important;
+	width: 100%;
+}
+
+/*  */
+
+div[class='container-fluid px-4'] {
+	width: 100%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 95px;
+}
+
+div[class='container-fluid px-4'] .card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+}
+
+div[class='container-fluid px-4'] .card>hr {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] {
+	flex: 1 1 auto;
+	padding: 1rem 1rem;
+}
+
+/* ------------------------------------------- DISEÑO DE LA SECCION FORM ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] {
+	min-height: 340x;
+	position: relative;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+
+/* ------------------------------------------- SEPARACION DE INPUTS ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group {
+	margin-bottom: 15px;
+}
+
+/* ------------------------------------------- POSICIONAMIENTO DE LOS INPUTS, LABEL Y BUTON ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group .label,
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	width: 100%;
+	color: rgb(24, 23, 23);
+	display: block;
+}
+
+/* ------------------------------------------- DISEÑO DE LOS INPUTS COLOR, TAMAÑO ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	border: none;
+	padding: 15px 20px;
+	border-radius: 25px;
+	background: rgb(218, 214, 214);
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .form-control {
+	margin: 2px 0px 2px -5px;
+}
+
+
+
+input[type="file"]#file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.invoiceBox>input {
+	display: none;
+}
+
+.invoiceBox label {
+	display: block;
+}
+
+.boxFile {
+	width: 100%;
+	background: rgb(218, 214, 214);
+	color: black;
+	padding: 10px;
+	text-align: center;
+	font-size: 15px;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.boxFile:hover {
+	cursor: pointer;
+	background: #00450f;
+	color: rgb(245, 245, 245);
+}
+
+.boxFile i {
+	display: block;
+	font-size: 22px;
+	margin-bottom: 5px;
+}
+
+.attached,
+.attached:hover,
+.attached:focus {
+	background: #00450f;
+	color: rgb(245, 245, 245);
+	border: 1px solid #008000;
+}
+
+/* ------------------------------------------- TAMAÑO Y COLOR DE LOS LABEL ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group .label {
+	color: black;
+	font-size: 15px;
+}
+
+/* ------------------------------------------- COLOR DE LOS BOTONES ------------------------------------------------- */
+div[class='container-fluid px-4'] div[class='card-body'] .group .button {
+	margin: 5px auto;
+	width: 20%;
+	background: #00450f;
+	color: white;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .button:hover {
+	color: #fff;
+	background: green;
+}
+
+/* ------------------------------------------- Tamaño De La Tabla ------------------------------------------------- */
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .table_form {
+	table-layout: fixed;
+	width: 100%;
+	border: 2;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .table_form .label_td {
+	width: 40%;
+	word-wrap: break-word;
+}
+
+div[class='container-fluid px-4'] div[class='card-body'] .group .table_form .input_td {
+	width: 55%;
+	height: 60px;
+	word-wrap: break-word;
+}
+
+/*------------------------------------------------------------------------------------------------------------------*/
+
+/*estilos para la tabla*/
+table th {
+    background-color: #00450f !important;
+    color: white;
+}
+
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='card-body'] table[class='display'] {
+	table-layout: fixed;
+	width: 100%;
+	border: 2;
+}
+
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='card-body'] table[class='display'] {
+	width: 40%;
+	word-wrap: break-word;
+}
+
+div[class='container-fluid px-4'] div[class='card mb-4'] div[class='card-body'] table[class='display'] {
+	width: 55%;
+	height: 60px;
+	word-wrap: break-word;
+}
+
+.btn-group-horizontal .btn {
+	margin-right: 5px;
+	border-radius: 15;
+}
+
+
+img[class = 'iconos-tabla']{
+	width: 30px;
+	height: 30px;
+}
